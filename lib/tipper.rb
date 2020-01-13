@@ -8,7 +8,10 @@ class Tipper
   end
 
   def total
-    amount + (amount * TAX) - (amount * (discount_percentage / 100.0)) + (amount * (tip_percentage / 100.0))
+    taxable_amount = amount * TAX
+    discounted_amount = amount * (discount_percentage / 100.0)
+    tippable_amount = amount * (tip_percentage / 100.0)
+    amount + taxable_amount - discounted_amount + tippable_amount
   end
 
   private
